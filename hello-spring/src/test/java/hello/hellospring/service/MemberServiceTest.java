@@ -21,10 +21,10 @@ class MemberServiceTest {
         memberService = new MemberService(memberRepository);
     }
 
-    @AfterEach
-    public void afterEach() {
-        memberRepository.clearStore();
-    }
+//    @AfterEach
+//    public void afterEach() {
+//        memberRepository.clearStore();
+//    }
 
     // 테스트는 예외 flow가 더 중요하다.
     @Test
