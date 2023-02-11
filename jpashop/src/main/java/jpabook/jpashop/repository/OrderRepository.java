@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -22,5 +23,11 @@ public class OrderRepository {
         return em.find(Order.class, id);
     }
 
-//    public List<Order> findAll(OrderSearch orderSearch) {}
+    public List<Order> findAllByString(OrderSearch orderSearch) {
+        String jpql = "select o from Order o join o.member m";
+
+        return em.createQuery(jpql, Order.class)
+                .setMaxResults(1000)    // 최대 1,000건
+                .getResultList();
+    }
 }
